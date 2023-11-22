@@ -1,13 +1,19 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { ApolloServer } from 'apollo-server-micro';
+import 'reflect-metadata';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { buildSchema, Resolver, Query, Arg, ObjectType } from 'type-graphql';
 
-type Data = {
-  name: string
-}
+const server = new ApolloServer({});
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+const startServer = server.start();
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  await startServer;
+  await server.createHandler({ path: '/api/graphql' })(req, res);
 }

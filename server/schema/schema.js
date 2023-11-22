@@ -13,18 +13,6 @@ const {
   GraphQLNonNull,
 } = graphql;
 
-// const books = [
-//   { name: 'Goosebumps', genre: 'Horror', id: '1', authorId: '1' },
-//   { name: 'Magic Treehouse', genre: 'Adventure', id: '2', authorId: '2' },
-//   { name: 'Harry Potter', genre: 'Sci-Fi', id: '3', authorId: '3' },
-// ];
-
-// const authors = [
-//   { name: 'R.L. Stine', age: 78, id: '1' },
-//   { name: 'Mary Pope Osborne', age: 72, id: '2' },
-//   { name: 'J.K. Rowling', age: 56, id: '3' },
-// ];
-
 const BookType = new GraphQLObjectType({
   name: 'Book',
   fields: () => ({

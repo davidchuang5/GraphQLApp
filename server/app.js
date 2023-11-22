@@ -4,6 +4,7 @@ const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 const bookSchema = require('./models/book');
 const authorSchema = require('./models/author');
+const cors = require('cors');
 
 mongoose.connect('mongodb+srv://davidchuang5:Andyir0ns@codesmithgradtest.akyjqlo.mongodb.net/');
 mongoose.connection.once('open', () => {
@@ -11,6 +12,7 @@ mongoose.connection.once('open', () => {
 });
 
 const app = express();
+app.use(cors());
 
 app.use(
   '/graphql',
