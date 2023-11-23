@@ -19,22 +19,19 @@ const getData = gql`
 `;
 
 export default function BookList() {
-  // const { loading, error, data } = useQuery<QueryResponse>(getData, { client });
-  // console.log('useQuery results', useQuery<QueryResponse>(getData, { client }));
-  // if (loading) return 'Loading...';
-  // if (error) return `Error! ${error.message}`;
-  console.log(useQuery(getData, { client }));
+  const { loading, error, data } = useQuery<QueryResponse>(getData, { client });
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
   return (
     <main>
       <div id="main">
         <h1>List of Available Books</h1>
       </div>
-      {/* <div>
-        {data?.data.map((item: DataType) => (
-          <div key={item.name}>
-            <p>{item.name}</p>
-          </div>
-        ))} */}
+      {data?.data.map((item: DataType) => (
+        <div key={item.name}>
+          <p>{item.name}</p>
+        </div>
+      ))}
     </main>
   );
 }
