@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import client from '../apolloClient';
+import client from '../../config/apollo_config/apolloClient';
 import { gql } from '@apollo/client';
 
 interface DataType {
