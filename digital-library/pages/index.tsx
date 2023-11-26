@@ -1,10 +1,15 @@
-import BookList from './api/graphql';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <main>
       <h1>Digital Library</h1>
-      <BookList />
+      <p>Welcome to the digital library!</p>
+      <Link href="/graphql">
+        <a>
+          <button>Click me to see what books are available!</button>
+        </a>
+      </Link>
     </main>
   );
 }
