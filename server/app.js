@@ -17,6 +17,14 @@ const MONGODB = 'mongodb+srv://davidchuang5:Andyir0ns@codesmithgradtest.akyjqlo.
 //   console.log('Connected to database');
 // });
 
+const typeDefs = require('./graphql/typeDefs');
+const resolvers = require('./graphql/resolver');
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
 // Connect to mongodb first becasue Apollo server relies on this connection
 mongoose
   .connect(MONGODB, { useNewUrlParser: true })
@@ -28,23 +36,18 @@ mongoose
     console.log(`Server running at ${res.url}`);
   });
 
-const app = express();
+// const app = express();
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+// app.use(cors());
 
-app.use(cors());
+// app.use(
+//   '/graphql',
+//   graphqlHTTP({
+//     schema,
+//     graphiql: true,
+//   })
+// );
 
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
-
-app.listen(4000, () => {
-  console.log('listening on port 4000');
-});
+// app.listen(4000, () => {
+//   console.log('listening on port 4000');
+// });
