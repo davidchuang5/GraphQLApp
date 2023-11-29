@@ -105,9 +105,9 @@ const Mutation = new GraphQLObjectType({
     addBook: {
       type: BookType,
       args: {
-        name: { type: new GraphQLNonNull(GraphQLString) },
-        genre: { type: new GraphQLNonNull(GraphQLString) },
-        author: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: GraphQLString },
+        genre: { type: GraphQLString },
+        author: { type: GraphQLString },
       },
       resolve(parent, args) {
         let book = new bookSchema({

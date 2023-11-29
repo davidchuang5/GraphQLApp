@@ -1,8 +1,7 @@
-// pages/graphql.tsx
-
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, useMutation, gql } from '@apollo/client';
 import client from '../config/apollo_config/apolloClient';
 import { BookList } from '../components/BookList';
+import { AddBook } from '../components/AddBook';
 
 const GET_BOOKS = gql`
   query GetBooks {
@@ -16,6 +15,17 @@ const GET_BOOKS = gql`
   }
 `;
 
+const ADD_BOOK = gql`
+  mutation AddBook($name: String!, $genre: String!, $author: String!) {
+    addbook(name: $name, genre: $genre, author: $author) {
+      name
+      genre
+      author {
+        name
+      }
+    }
+  }
+`;
 export default function GraphQLPage() {
   const { data, loading, error } = useQuery(GET_BOOKS, { client });
 
@@ -25,6 +35,7 @@ export default function GraphQLPage() {
   return (
     <div>
       <BookList books={data.books} />
+      <AddBook mutation={ADD_BOOK} />
     </div>
   );
 }
