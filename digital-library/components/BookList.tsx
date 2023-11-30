@@ -1,16 +1,16 @@
 // components/BookList.tsx
 
-interface Book {
+type Book = {
   name: string;
   genre: string;
   author: string;
-}
+};
 
-interface Props {
+type Props = {
   books: Book[];
-}
+};
 
-export function BookList({ books }: Props) {
+export default function BookList({ books }: Props) {
   return (
     <div>
       {books.map((book) => (

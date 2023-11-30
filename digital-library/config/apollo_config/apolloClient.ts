@@ -1,19 +1,21 @@
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
-
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { cache } from './cache';
 const client = new ApolloClient({
+  cache,
   uri: 'http://localhost:4000/graphql', // replace with your server's URL
-  cache: new InMemoryCache(),
 });
 
-client
-  .query({
-    query: gql`
-      query getBooks {
-        books {
-          name
-        }
-      }
-    `,
-  })
-  .then((result) => console.log('result', result));
+// client
+//   .query({
+//     query: gql`
+//       query getBooks {
+//         getBooks {
+//           name
+//           genre
+//           author
+//         }
+//       }
+//     `,
+//   })
+//   .then((result) => console.log('result', result));
 export default client;

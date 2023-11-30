@@ -1,6 +1,6 @@
 const { gql, GraphQLID } = require('apollo-server');
 
-module.exports = gql`
+const typeDefs = gql`
   type Book {
     name: String
     genre: String
@@ -23,3 +23,5 @@ module.exports = gql`
     editBook(ID: ID!, bookInput: BookInput): Boolean
   }
 `;
+
+module.exports = typeDefs;

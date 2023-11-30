@@ -6,9 +6,7 @@ export default function Home() {
       <h1>Digital Library</h1>
       <p>Welcome to the digital library!</p>
       <Link href="/graphql">
-
         <button>Click me to see what books are available!</button>
-
       </Link>
     </main>
   );

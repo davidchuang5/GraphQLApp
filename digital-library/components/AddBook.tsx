@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-interface addBookProps {
+type addBookProps = {
   mutation: any;
-}
-export function AddBook({ mutation }: addBookProps) {
+};
+export default function AddBook({ mutation }: addBookProps) {
   const [name, setName] = useState('');
   const [genre, setGenre] = useState('');
   const [author, setAuthor] = useState('');
@@ -25,6 +25,7 @@ export function AddBook({ mutation }: addBookProps) {
       setAuthor('');
     } catch (err) {
       console.error(err);
+      console.log('name', name, 'genre', genre, 'author', author);
     }
   };
 
